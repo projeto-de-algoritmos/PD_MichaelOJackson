@@ -1,0 +1,64 @@
+{% extends "base_template.html" %}
+{% block body %}
+<br>
+<div class='d-flex justify-content-center'>
+  <h1>Aulas de PA</h1>
+</div>
+
+<div class="row d-flex justify-content-center">
+  {% for i in row1 %}
+
+  <div style="margin-top: 20px;" class="col-md">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" width="100" height="100" src="{{i.url}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.description}}</p>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+
+<div class="row d-flex justify-content-center">
+  {% for i in row2 %}
+
+  <div style="margin-top: 20px;" class="col-md">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" width="100" height="100" src="{{i.url}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.description}}</p>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+<div  style="margin:0 auto; width: 500px">
+  <form action="{{ url_for('render_knapsack') }} " method = 'post' class="")>
+    <div align="center">
+      <label for="fname">Escolha a matéria que deseja buscar:</label><br><br>
+      <select name="memory" class="form-select" aria-label="Default select example">
+        <option value='100'>100 MiB</option>
+        <option value='200'>200 MiB</option>
+        <option value='300'>300 MiB</option>
+        <option value='400'>400 MiB</option>
+        <option value='500'>500 MiB</option>
+        <option value='600'>600 MiB</option>
+        <option value='700'>700 MiB</option>
+        <option value='800'>800 MiB</option>
+        <option value='900'>900 MiB</option>
+      </select>
+      <button class="btn btn-dark mt-3" style="width:100%">Enviar</button>
+    </div>
+  </form>
+</div>
+
+</br>
+</br>
+</br>
+{% endblock %}
