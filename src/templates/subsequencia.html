@@ -1,0 +1,43 @@
+{% extends "base_template.html" %}
+{% block body %}
+<br>
+<div  style="margin:0 auto; width: 500px">
+  <div align="center">
+    <br>
+    <h1>Problema</h1>
+    <br>
+    <img src="http://images6.fanpop.com/image/articles/228000/michael-jackson_228700_9.jpg?cache=1391035985" alt="michael" width="300" height="250" >
+    <br>
+    <br>
+    <p>
+      Michael Jackson está com dúvidas sobre o andamento de sua carreira, ele gostaria de saber se sua carreira vem crescendo ou piorando,
+      preocupado com isso Michael descobre que um jeito de descobrir o andamento de uma carreira é medindo a quantidade de público pagante
+      nos shows do artista e calculando a maior subsequência crescente e vendo o tamanho dessa subsequência, quanto maior a subsequência 
+      quer dizer que o público de seus shows tem aumentado gradativamente e que por isso ele está em alta, se for muito pequena o público
+      está deixando de assistir os shows. Michael está muito preocupado e pede que você o ajude!
+
+    </p>
+  </div>
+</div>
+<br>
+
+<div class='d-flex justify-content-center'>
+  <h1>Subsequência de Shows</h1></br>
+</div>
+
+<div class='d-flex justify-content-center'>
+  <h5>Digite números separados por espaço!</h5>
+</div>
+
+<div class='d-flex justify-content-center'>
+</br>
+  <form action="{{ url_for('render_subsequencia') }} " method = 'post' class="")>
+    <input type="text" class="form-control" placeholder="Digite aqui os públicos separados por espaço" name="values">
+    <button class="btn btn-dark mt-3" style="width:100%">Enviar</button>
+  </form>
+</div>
+
+</br>
+    </br>
+    </br>
+    {% endblock %}

@@ -1,12 +1,8 @@
 from flask import Blueprint, render_template, request
 from .knapsack import knapsack
+from .msc import msc
 
 pd_bp = Blueprint("", __name__)
-
-val = [70, 40, 90, 80, 20, 30]
-wt = [253, 114, 291, 280, 190, 468]
-W = 60
-
 
 @pd_bp.route('/knapsack/', methods=["GET", "POST"])
 def render_knapsack():
@@ -55,7 +51,10 @@ def render_knapsack():
             request.form.get('a5'),
             request.form.get('a6'),
         ]
-        return f"{knapsack(int(memory),wt,val,len(val))} + {memory} + {[int(i) for i in values]} "
+        weight = [253, 114, 291, 280, 190, 468]
+        values = [int(i) for i in values]
+        return render_template('knapsack_result.html', result=knapsack(
+            int(memory), weight, values, len(values)), val_max=sum(values))
 
 
 @pd_bp.route('/', methods=["GET"])
@@ -63,6 +62,12 @@ def render_home():
     return render_template('home.html')
 
 
-@pd_bp.route('/subsequencia/', methods=["GET"])
+@pd_bp.route('/subsequencia/', methods=["GET","POST"])
 def render_subsequencia():
-    return render_template('subsequencia.html')
+    if request.method == "GET":
+        return render_template('subsequencia.html')
+    else:
+        values = [int(i) for i in str(request.form.get('values')).split(' ')]
+        return render_template('subsequencia_result.html', val_max = len(values), sub = msc(values), val = len(msc(values)) )
+
+
